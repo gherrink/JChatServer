@@ -13,6 +13,7 @@ public class UserRegister
 {
     
     private String user;
+    private String mail;
     private String password;
     private String passwordRepaed;
 
@@ -62,6 +63,22 @@ public class UserRegister
     public void setPasswordRepaed(String passwordRepaed)
     {
         this.passwordRepaed = passwordRepaed;
+    }
+
+    /**
+     * @return the mail
+     */
+    public String getMail()
+    {
+        return mail;
+    }
+
+    /**
+     * @param mail the mail to set
+     */
+    public void setMail(String mail)
+    {
+        this.mail = mail;
     }
     
 }

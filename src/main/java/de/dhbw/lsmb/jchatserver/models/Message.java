@@ -5,28 +5,39 @@
  */
 package de.dhbw.lsmb.jchatserver.models;
 
+import com.sun.istack.internal.NotNull;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
  * @author Maurice Busch <busch.maurice@gmx.net>
  */
+@Entity
 public class Message
 {
-    private String message;
-    private String sender;
+    @Id
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date date;
     
-    public Message(String message, String sender)
-    {
-        this(message, sender, new Date());
-    }
+    @Column
+    @NotNull
+    private String message;
     
-    public Message(String message, String sender, Date date)
+    @Column
+    @NotNull
+    private int sender;
+    
+    public Message(String message, int sender)
     {
         this.message = message;
         this.sender = sender;
-        this.date = date;
     }
     
     /**
@@ -48,7 +59,7 @@ public class Message
     /**
      * @return the sender
      */
-    public String getSender()
+    public int getSender()
     {
         return sender;
     }
@@ -56,7 +67,7 @@ public class Message
     /**
      * @param sender the sender to set
      */
-    public void setSender(String sender)
+    public void setSender(int sender)
     {
         this.sender = sender;
     }
@@ -67,14 +78,6 @@ public class Message
     public Date getDate()
     {
         return date;
-    }
-
-    /**
-     * @param date the date to set
-     */
-    public void setDate(Date date)
-    {
-        this.date = date;
     }
     
 }

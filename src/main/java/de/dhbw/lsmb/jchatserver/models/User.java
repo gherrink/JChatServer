@@ -5,24 +5,61 @@
  */
 package de.dhbw.lsmb.jchatserver.models;
 
+import com.sun.istack.internal.NotNull;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Maurice Busch <busch.maurice@gmx.net>
  */
+@Entity
 public class User
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    
+    @Column(length = 50, name = "user_name")
+    @NotNull
     private String user;
+    
+    @Column(length = 64)
+    @NotNull
     private String password;
     
-    public User(String user, String password)
+    @Column(length = 80)
+    @NotNull
+    private String mail;
+    
+    public User(String user, String mail, String password)
     {
         this.user = user;
+        this.mail = mail;
         this.password = password;
+    }
+    
+    /**
+     * @return the id
+     */
+    public int getId()
+    {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     /**
@@ -57,7 +94,7 @@ public class User
         this.password = password;
     }
     
-    public String hashPassword()
+    public static String hashPassword(String password)
     {
         MessageDigest messageDigest;
         try
@@ -71,6 +108,22 @@ public class User
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
         return password;
+    }
+
+    /**
+     * @return the mail
+     */
+    public String getMail()
+    {
+        return mail;
+    }
+
+    /**
+     * @param mail the mail to set
+     */
+    public void setMail(String mail)
+    {
+        this.mail = mail;
     }
     
 }

@@ -5,20 +5,18 @@
  */
 package de.dhbw.lsmb.jchatserver;
 
-import de.dhbw.lsmb.jchatserver.models.Message;
-import org.restlet.resource.Get;
+import de.dhbw.lsmb.jchatserver.models.UserRegister;
+import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
 /**
  *
  * @author Maurice Busch <busch.maurice@gmx.net>
  */
-
-public class HistoryResource extends ServerResource {
-
-    @Get
-    public Message represent() {
-        return new Message("Hallo", 1);
+public class RegisterResource extends ServerResource
+{
+    @Put
+    public UserRegister sendMessage(UserRegister register) {
+        return register;
     }
-
 }

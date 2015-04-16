@@ -34,6 +34,7 @@ public class ChatServer extends Application {
 
         router.attach("/history", HistoryResource.class);
         router.attach("/chat", ChatResource.class);
+        router.attach("/register", RegisterResource.class);
 
         return router;
     }
