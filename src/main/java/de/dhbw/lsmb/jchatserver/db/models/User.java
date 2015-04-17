@@ -6,6 +6,8 @@
 package de.dhbw.lsmb.jchatserver.db.models;
 
 import com.sun.istack.internal.NotNull;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
@@ -15,7 +17,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
 
 /**
  *
@@ -24,6 +25,8 @@ import javax.persistence.UniqueConstraint;
 @Entity
 public class User
 {
+    private static final String ADD_4_PASSWORD = "dkd938cmeu3mdDDE83";
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -32,7 +35,7 @@ public class User
     @NotNull
     private String user;
     
-    @Column(length = 64)
+    @Column(length = 32)
     @NotNull
     private String password;
     
@@ -100,19 +103,21 @@ public class User
         this.password = password;
     }
     
-    public static String hashPassword(String password)
+    public static String hashPassword(String password, String mail)
     {
-        MessageDigest messageDigest;
+        String str = password + ADD_4_PASSWORD + mail;
         try
         {
-            messageDigest = MessageDigest.getInstance("SHA-256");
-            messageDigest.update(password.getBytes());
-            return new String(messageDigest.digest());
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            BigInteger number = new BigInteger(1, md.digest(str.getBytes()));
+            String hashtext = number.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
         }
         catch(NoSuchAlgorithmException ex)
-        {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        {}
         return password;
     }
 

@@ -5,6 +5,10 @@
  */
 package de.dhbw.lsmb.jchatserver;
 
+import de.dhbw.lsmb.jchatserver.resources.MessageResource;
+import de.dhbw.lsmb.jchatserver.resources.RegisterResource;
+import de.dhbw.lsmb.jchatserver.resources.HistoryResource;
+import de.dhbw.lsmb.jchatserver.resources.LoginResource;
 import org.restlet.Application;
 import org.restlet.Component;
 import org.restlet.Restlet;
@@ -35,6 +39,7 @@ public class ChatServer extends Application {
         router.attach("/history", HistoryResource.class);
         router.attach("/message", MessageResource.class);
         router.attach("/register", RegisterResource.class);
+        router.attach("/login", LoginResource.class);
 
         return router;
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dhbw.lsmb.jchatserver;
+package de.dhbw.lsmb.jchatserver.resources;
 
 import de.dhbw.lsmb.jchatserver.db.EntityManagement;
 import de.dhbw.lsmb.jchatserver.db.models.User;
@@ -47,7 +47,8 @@ public class RegisterResource extends ServerResource
             return "Mail already exists.";
         }
         
-        User newUser = new User(register.getUser(), register.getMail(), User.hashPassword(register.getPassword()));
+        String pw = User.hashPassword(register.getPassword(), register.getMail());
+        User newUser = new User(register.getUser(), register.getMail(), pw);
         em.getTransaction().begin();
         em.persist(newUser);
         em.getTransaction().commit();

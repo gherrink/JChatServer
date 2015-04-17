@@ -1,0 +1,33 @@
+printf "not exists: " $value
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/login -d '
+{
+    "mail":"foobaar@domain.de",
+    "password":"pwwwwww"
+}
+'
+
+printf "\npassword incorrect: "
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/login -d '
+{
+    "mail":"user@domain.irgendwo",
+    "password":"passwordddd"
+}
+'
+
+printf "\nmail incorrect: "
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/login -d '
+{
+    "mail":"foobar@domain.irgendwo",
+    "password":"password"
+}
+'
+
+printf "\nlogin: "
+curl -H "Content-type: application/json" -c cookies-user1.txt -X PUT http://localhost:8182/login -d '
+{
+    "mail":"user@domain.irgendwo",
+    "password":"password"
+}
+'
+
+printf "\n"

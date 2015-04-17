@@ -14,6 +14,11 @@ public class JsonUser
     private String password;
     private String mail;
     
+    public JsonUser()
+    {
+        this(null, null);
+    }
+    
     public JsonUser(String mail, String password)
     {
         this.mail = mail;

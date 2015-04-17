@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dhbw.lsmb.jchatserver;
+package de.dhbw.lsmb.jchatserver.resources;
 
 import de.dhbw.lsmb.jchatserver.json.models.JsonMessage;
 import org.restlet.resource.Put;
