@@ -5,7 +5,7 @@
  */
 package de.dhbw.lsmb.jchatserver;
 
-import de.dhbw.lsmb.jchatserver.models.Message;
+import de.dhbw.lsmb.jchatserver.json.models.JsonMessage;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
@@ -17,8 +17,8 @@ import org.restlet.resource.ServerResource;
 public class HistoryResource extends ServerResource {
 
     @Get
-    public Message represent() {
-        return new Message("Hallo", 1);
+    public JsonMessage represent() {
+        return new JsonMessage("Hallo", "Bob");
     }
 
 }

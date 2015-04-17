@@ -5,7 +5,7 @@
  */
 package de.dhbw.lsmb.jchatserver;
 
-import de.dhbw.lsmb.jchatserver.models.Message;
+import de.dhbw.lsmb.jchatserver.json.models.JsonMessage;
 import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
@@ -14,12 +14,11 @@ import org.restlet.resource.ServerResource;
  * @author Maurice Busch <busch.maurice@gmx.net>
  */
 
-public class ChatResource extends ServerResource {
+public class MessageResource extends ServerResource {
 
     @Put
-    public String sendMessage(Message message) {
-        
-        return "message";
+    public JsonMessage sendMessage(JsonMessage message) {
+        return message;
     }
 
 }

@@ -3,34 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dhbw.lsmb.jchatserver.models;
+package de.dhbw.lsmb.jchatserver.json.models;
 
 /**
  *
  * @author Maurice Busch <busch.maurice@gmx.net>
  */
-public class UserRegister
+public class JsonUser
 {
-    
-    private String user;
-    private String mail;
     private String password;
-    private String passwordRepaed;
-
-    /**
-     * @return the user
-     */
-    public String getUser()
+    private String mail;
+    
+    public JsonUser(String mail, String password)
     {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(String user)
-    {
-        this.user = user;
+        this.mail = mail;
+        this.password = password;
     }
 
     /**
@@ -47,22 +34,6 @@ public class UserRegister
     public void setPassword(String password)
     {
         this.password = password;
-    }
-
-    /**
-     * @return the passwordRepaed
-     */
-    public String getPasswordRepaed()
-    {
-        return passwordRepaed;
-    }
-
-    /**
-     * @param passwordRepaed the passwordRepaed to set
-     */
-    public void setPasswordRepaed(String passwordRepaed)
-    {
-        this.passwordRepaed = passwordRepaed;
     }
 
     /**

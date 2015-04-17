@@ -1,0 +1,8 @@
+curl -i -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
+{
+    "mail":"user@domain.irgendwo",
+    "user":"user",
+    "password":"password",
+    "password_repead":"password"
+}
+'

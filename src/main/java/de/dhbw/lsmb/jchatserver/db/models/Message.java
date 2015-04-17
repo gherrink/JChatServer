@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.dhbw.lsmb.jchatserver.models;
+package de.dhbw.lsmb.jchatserver.db.models;
 
 import com.sun.istack.internal.NotNull;
 import java.util.Date;

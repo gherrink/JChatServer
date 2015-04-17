@@ -33,7 +33,7 @@ public class ChatServer extends Application {
         Router router = new Router(getContext());
 
         router.attach("/history", HistoryResource.class);
-        router.attach("/chat", ChatResource.class);
+        router.attach("/message", MessageResource.class);
         router.attach("/register", RegisterResource.class);
 
         return router;

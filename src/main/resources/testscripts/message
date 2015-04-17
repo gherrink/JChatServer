@@ -1,0 +1,6 @@
+curl -i -H "Content-type: application/json" -X PUT http://localhost:8182/message -d '
+{
+    "message":"Hallo Welt.",
+    "user":"1"
+}
+'

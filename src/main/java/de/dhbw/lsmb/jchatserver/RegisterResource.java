@@ -5,7 +5,7 @@
  */
 package de.dhbw.lsmb.jchatserver;
 
-import de.dhbw.lsmb.jchatserver.models.UserRegister;
+import de.dhbw.lsmb.jchatserver.json.models.JsonUserRegister;
 import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
@@ -16,7 +16,7 @@ import org.restlet.resource.ServerResource;
 public class RegisterResource extends ServerResource
 {
     @Put
-    public UserRegister sendMessage(UserRegister register) {
+    public JsonUserRegister sendMessage(JsonUserRegister register) {
         return register;
     }
 }
