@@ -1,0 +1,9 @@
+printf "logout: "
+curl -b cookies-user1.txt -c cookies-user1.txt -X GET http://localhost:8182/logout
+
+rm cookies-user1.txt
+
+printf "\nlogout no coockie: "
+curl -b cookies-user1.txt -X GET http://localhost:8182/logout
+
+printf "\n"

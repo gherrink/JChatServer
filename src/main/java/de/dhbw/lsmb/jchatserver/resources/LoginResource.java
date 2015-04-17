@@ -21,10 +21,12 @@ import org.restlet.resource.ServerResource;
  */
 public class LoginResource extends ServerResource
 {
+    public static final String SAFTYCOOKIEID = "saftycookie";
+    
     private static final String SELECT = "FROM User u WHERE u.mail = :mail AND u.password = :password";
     
     @Put
-    public String sendMessage(JsonUser user) {
+    public String login(JsonUser user) {
         String pw = User.hashPassword(user.getPassword(), user.getMail());
         
         EntityManager em = EntityManagement.createEntityManager();
@@ -32,14 +34,13 @@ public class LoginResource extends ServerResource
         query.setParameter("mail", user.getMail());
         query.setParameter("password", pw);
         
-        System.out.println("mail: " + user.getMail() + "pw: " + pw);
         if(query.getResultList().isEmpty()){
             em.close();
             setStatus(Status.CLIENT_ERROR_BAD_REQUEST);
             return "Mail or password is incorrect.";
         }
         
-        CookieSetting cs = new CookieSetting(0, "saftycookie", pw);
+        CookieSetting cs = new CookieSetting(0, SAFTYCOOKIEID, pw);
         this.getResponse().getCookieSettings().add(cs);
         
         setStatus(Status.SUCCESS_OK);
