@@ -1,4 +1,5 @@
-curl -i -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
+printf "register: " $value
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
 {
     "mail":"user@domain.irgendwo",
     "user":"user",
@@ -6,3 +7,35 @@ curl -i -H "Content-type: application/json" -X PUT http://localhost:8182/registe
     "password_repead":"password"
 }
 '
+
+printf "\npassword not equal: "
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
+{
+    "mail":"user@domain.irgendwo",
+    "user":"user",
+    "password":"password",
+    "password_repead":"passwordddd"
+}
+'
+
+printf "\nsame user: "
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
+{
+    "mail":"user@domain.someware",
+    "user":"user",
+    "password":"password",
+    "password_repead":"password"
+}
+'
+
+printf "\nsame mail: "
+curl -H "Content-type: application/json" -X PUT http://localhost:8182/register -d '
+{
+    "mail":"user@domain.irgendwo",
+    "user":"fuubaar",
+    "password":"password",
+    "password_repead":"password"
+}
+'
+
+printf "\n"

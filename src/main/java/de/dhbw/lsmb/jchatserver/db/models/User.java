@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
@@ -27,7 +28,7 @@ public class User
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
-    @Column(length = 50, name = "user_name")
+    @Column(length = 50, name = "user_name", unique = true)
     @NotNull
     private String user;
     
@@ -35,9 +36,14 @@ public class User
     @NotNull
     private String password;
     
-    @Column(length = 80)
+    @Column(length = 80, unique = true)
     @NotNull
     private String mail;
+    
+    public User()
+    {
+        this(null, null, null);
+    }
     
     public User(String user, String mail, String password)
     {

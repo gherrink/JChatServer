@@ -29,4 +29,6 @@ public class EntityManagement {
     public static EntityManager createEntityManager() {
         return getEntityManagerFactoryInstance().createEntityManager();
     }
+    
+    
 }
